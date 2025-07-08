@@ -1,28 +1,19 @@
-apply plugin: 'java'
+plugins {
+    id 'java'
+}
 
-group = 'com.epam.edp'
-version = '0.0.1-SNAPSHOT'
-
-description = """"""
-
-sourceCompatibility = 21
-targetCompatibility = 21
-tasks.withType(JavaCompile) {
-    options.encoding = 'UTF-8'
+java {
+    toolchain {
+        languageVersion = JavaLanguageVersion.of(21)
+    }
 }
 
 repositories {
-    maven { url "https://repo.maven.apache.org/maven2" }
+    mavenCentral()
 }
 
 dependencies {
     testImplementation 'org.junit.jupiter:junit-jupiter:5.10.2'
-}
-
-tasks.register('hello') {
-    doLast {
-        println 'Hello world!'
-    }
 }
 
 test {
